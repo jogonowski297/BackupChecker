@@ -3,18 +3,23 @@ import os
 import time
 
 class Path:
-    def __init__(self):
-        self.folder_name = "Backup "
+    def __init__(self, foldernames):
+        self.folder_names = foldernames
 
     def get_date_and_size(self, path):
         for dirpath, dirnames, filenames in os.walk(path[1:-1]):
             for i in dirnames:
-                x = re.compile(self.folder_name[1:-1])
-                if(x.search(str(i))):
-                    date = self.get_date(path, i)
-                    backup_size = self.humanbytes(self.get_folder_size(path[1:-1],i))
-                    return backup_size,date
+                for j in self.folder_names:
+                    x = re.compile(j[1:-1])
+                    if(x.search(str(i))):
+                        print(j, self.get_folder_size(path[1:-1],i))
+                        backup_size = self.humanbytes(self.get_folder_size(path[1:-1],i))
+                        if(backup_size == '0.00'):
+                            backup_size = f'{self.get_folder_size(path[1:-1],i)} B'
+                        date = self.get_date(path, i)
+                        return backup_size, date
             break
+        return "ERROR", "ERROR"
 
     def get_date(self, path,  dir_):
         modTimesinceEpoc = os.path.getmtime(path[1:-1] + '\\' + dir_)
@@ -22,7 +27,7 @@ class Path:
 
         return modificationTime
 
-    def get_folder_size(self,path,dir_):
+    def get_folder_size(self, path, dir_):
         size = 0
         for file in os.scandir(path + '\\' + dir_):
             size += os.stat(file).st_size

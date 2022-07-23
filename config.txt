@@ -1,3 +1,6 @@
-### Ścieżka do katalogu z kopią | rozmiar jaki powinien mieć katalog | co ile dni jest robiona kopia ###
-"\\192.168.1.111\...\...",,,"25",,,"1"
-"\\192.168.1.112\...\...",,,"47",,,"1"
+### Katalogi, które mają być sprawdzane ###
+"Backup ",,,"dane"
+### Ścieżka do katalogu z kopią ###
+"\\192.168.1.99\Kopia_1\WindowsImageBackup\Kopia_1"
+"\\192.168.1.99\Kopia_2\WindowsImageBackup\Kopia_2"
+"\\192.168.1.99\Kopia_3\WindowsImageBackup\Kopia_3"

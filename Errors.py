@@ -5,5 +5,5 @@ class Errors:
     def add_error(self):
         self.errors+=1
 
-    def print_errors(self):
+    def get_errors(self):
         return self.errors
