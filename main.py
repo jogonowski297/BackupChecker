@@ -20,7 +20,7 @@ if __name__ == "__main__":
     main = [s.replace("\n", "").split(",,,") for s in config.readlines()]
     id_counter = 1
     table_number = 1
-    Path = Path(main[1])
+    Path = Path(main[3])
     Error = Errors()
 
     while True:
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     with smtplib.SMTP_SSL(smtp_server,port,context=ssl_pol) as serwer:
         serwer.login(nadawca,haslo)
-        for m in main[3:]:
+        for m in main[5:]:
             size, date = Path.get_date_and_size(m[0])
 
             if table_number == 1:
@@ -53,6 +53,6 @@ if __name__ == "__main__":
             DataBase.add_to_db(add, data)
 
         if send:
-            wiadomosc += f'Subject: Ilosc niepowodzen: {Error.get_errors()}\n\n' + katalogi
+            wiadomosc += f'Subject: {main[1][0]} - Ilosc niepowodzen: {Error.get_errors()}\n\n' + katalogi
             serwer.sendmail(nadawca, odbiorca, wiadomosc)
             DataBase.conn.close()

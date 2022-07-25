@@ -1,3 +1,5 @@
+### Nazwa firmy ###
+Company
 ### Katalogi, które mają być sprawdzane (odpowiednie nazwy katalogow oddziel potrójnym przecinkiem) ###
 "Backup ",,,"dane"
 ### Ścieżka do katalogu z kopią (odpowiednie ścieżki oddziel znakiem nowej linii) ###
